@@ -1,12 +1,11 @@
 module "ec2_instance" {
   source  = "terraform-aws-modules/ec2-instance/aws"
 
-  name = "Nexus-artifactory"
-  ami = "ami-0b825ad86ddcfb907"
+  name = "Nexus-tool"
+  ami = "ami-0f98860b8bc09bd5c"
   instance_type          = "t2.medium"
-  key_name               = "vinod_aug2023"
+  key_name               = "Shobha_2023_oct"
   monitoring             = true
-  vpc_security_group_ids = ["sg-076bbf8a4ce79b6aa"]
+  vpc_security_group_ids = ["sg-07180dcb48390e1bc"]
   user_data = file("nexus.sh")
-
 }
