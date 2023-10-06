@@ -1,0 +1,25 @@
+pipeline {
+    agent { label "project_agent1" }   
+
+    stages {
+        stage('clone_Terraform_project') {
+            steps {
+                echo 'to create Nexus Tool'
+                git 'https://github.com/ms0695580/jenkins_terraform.git'
+            }
+        }
+        stage('Terraform Initialize') {
+            steps {
+                echo 'Terraform Initialize'
+                sh 'terraform init'    
+            }
+        }  
+        stage('Terraform plan and apply') {
+            steps {
+                echo 'Terraform plan and apply'
+                sh 'terraform plan'
+                sh 'terraform apply -auto-approve'          
+            }
+        }        
+    }
+}
